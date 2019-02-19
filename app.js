@@ -11,8 +11,8 @@ import path from 'path'
 
 
 //router路由列表
-import upload from './router/upload'
-import index from './router/index'
+import upload from './routes/upload'
+import index from './routes/index'
 
 
 
