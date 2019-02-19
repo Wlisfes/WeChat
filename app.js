@@ -13,6 +13,7 @@ import path from 'path'
 //router路由列表
 import upload from './routes/upload'
 import index from './routes/index'
+import wxReply from './routes/wxReply'
 
 
 
@@ -55,6 +56,8 @@ app.use(views(path.join(__dirname + '/public'), {
 //router路由挂载
 app.use(upload.routes(), upload.allowedMethods())
 app.use(index.routes(), index.allowedMethods())
+app.use(wxReply.routes(), wxReply.allowedMethods())
+
 
 
 

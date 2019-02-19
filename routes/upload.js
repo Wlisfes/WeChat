@@ -1,8 +1,13 @@
 'use strict'
 
-/**
- * 文件上传接口
+/*
+ * @Author: 情雨随风 
+ * @Date: 2019-02-19 21:20:44 
+ * @Last Modified by: Parker
+ * @Last Modified time: 2019-02-19 21:21:23
+ * @Types 图片上传接口
  */
+
 
 import Router from 'koa-router'
 import multer from 'koa-multer'
