@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-19 21:26:48 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-19 22:36:05
+ * @Last Modified time: 2019-02-20 22:28:33
  * @Types 配置文件
  */
 
@@ -18,6 +18,9 @@ export const WxCon = {
     isSafeModel: false,
     encodingAESKey: ""
 }
+
+//微信服务器地址
+export const WxApi = "https://api.weixin.qq.com/cgi-bin"
 
 
 //图灵Apidiz

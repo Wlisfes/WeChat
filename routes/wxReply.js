@@ -4,14 +4,14 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-19 21:19:06 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-19 23:21:37
+ * @Last Modified time: 2019-02-20 21:00:26
  * @Types 微信公众自动回复接口
  */
 
 
 import Router from 'koa-router'
 import CoWechat from 'co-wechat'
-import { WxCon,NirvanaAi } from '../config/index'
+import { WxCon } from '../config/index'
 import TuAi from '../config/TuAi'
 
 const router = Router()
