@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-19 21:19:06 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-20 21:00:26
+ * @Last Modified time: 2019-02-21 20:55:06
  * @Types 微信公众自动回复接口
  */
 
@@ -41,7 +41,8 @@ const Reply = CoWechat(WxCon).middleware(async (message, ctx) => {
 })
 
 
-router.get('/Reply', Reply)
-router.post('/Reply', Reply)
+router
+    .get('/Reply', Reply)
+    .post('/Reply', Reply)
 
 export default router

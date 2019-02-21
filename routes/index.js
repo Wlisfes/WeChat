@@ -6,6 +6,8 @@
 
 import Router from 'koa-router'
 import { ApiAccessToken } from '../weixin/token'
+import { ApiAccessTicket } from '../weixin/ticket'
+import { ApiSign } from '../weixin/sign'
 
 const router = Router()
 
@@ -18,5 +20,20 @@ router.get('/token', async (ctx) => {
 
     ctx.body = res
 })
+
+
+router.get('/ticket', async (ctx) => {
+    let res = await ApiAccessTicket()
+
+    ctx.body = res
+})
+
+
+router.get('/sign', async (ctx) => {
+    // let res = await ApiSign()
+    console.log(ctx.url)
+    ctx.body = ctx
+})
+
 
 export default router
