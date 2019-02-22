@@ -17,27 +17,25 @@ import wxReply from './routes/wxReply'
 
 
 
-
-
-
 const app = new Koa()
+
 
 //错误处理中间件
 onerror(app)
 
+//router日志中间件
+app.use(logger())
+
 //cors跨域处理
 app.use(cors())
+
+//json格式化
+app.use(json())
 
 //post参数获取中间件
 app.use(bodyparser({
     enableTypes:['json', 'form', 'text']
 }))
-
-//json格式化
-app.use(json())
-
-//router日志中间件
-app.use(logger())
 
 //静态资源中间件
 app.use(require('koa-static')(__dirname + '/public'))

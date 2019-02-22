@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-21 21:31:58 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-21 22:11:35
+ * @Last Modified time: 2019-02-22 15:15:04
  * @Type signature JSApi签名接口
  */
 
@@ -14,12 +14,14 @@ import { ApiAccessTicket } from './ticket'
 import crypto from 'crypto'
 
 
- /**
+
+/**
  * 获取Sign签名
+ * @param { Object } ctx 完整的ctx对象
  */
-export const ApiSign = async () => {
+export const ApiSign = async (ctx) => {
     let Ticket = await ApiAccessTicket()
-    let url = 'http://limvc.iok.la'
+    let url = ctx.request.href
     let noncestr = createNonce()
     let timestamp = createTimestamp()
     let signature = await createSort(noncestr, Ticket.ticket, timestamp, url)

@@ -30,9 +30,9 @@ router.get('/ticket', async (ctx) => {
 
 
 router.get('/sign', async (ctx) => {
-    // let res = await ApiSign()
-    console.log(ctx.url)
-    ctx.body = ctx
+    let res = await ApiSign(ctx)
+    
+    ctx.body = res
 })
 
 
