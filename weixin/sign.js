@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-21 21:31:58 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-22 15:15:04
+ * @Last Modified time: 2019-02-22 21:06:36
  * @Type signature JSApi签名接口
  */
 
@@ -50,7 +50,7 @@ var createTimestamp = () => {
 
 
 /**
- * 字典排序
+ * 字典排序sha1加密返回密钥
  * @param { String } noncestr 
  * @param { String } ticket 
  * @param { String } timestamp 

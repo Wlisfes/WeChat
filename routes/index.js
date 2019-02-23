@@ -8,11 +8,13 @@ import Router from 'koa-router'
 import { ApiAccessToken } from '../weixin/token'
 import { ApiAccessTicket } from '../weixin/ticket'
 import { ApiSign } from '../weixin/sign'
+import { templateSend } from '../weixin/messageTemplate'
 
 const router = Router()
 
 router.get('/', async (ctx) => {
-    ctx.body = `<h1 style="font-size: 42px;text-align: center;">Hello koa<h1/>`
+
+    await ctx.render('index')
 })
 
 router.get('/token', async (ctx) => {
@@ -32,6 +34,14 @@ router.get('/ticket', async (ctx) => {
 router.get('/sign', async (ctx) => {
     let res = await ApiSign(ctx)
     
+    ctx.body = res
+})
+
+router.get('/send', async (ctx) => {
+    let res = await templateSend({
+        url: "http://lisfes.cn"
+    })
+
     ctx.body = res
 })
 

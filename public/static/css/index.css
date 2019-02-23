@@ -1,0 +1,28 @@
+* {
+    margin: 0;padding: 0;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 12px;
+    text-align: center;
+}
+
+#button {
+    margin: 200px 14px 0;
+    border: none;
+    font-size: 18px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: #1AAD19;
+    color: #FFFFFF;
+    outline: none;
+}
+
+
+
+
