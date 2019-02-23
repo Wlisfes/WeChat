@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-20 21:02:26 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-21 21:16:07
+ * @Last Modified time: 2019-02-23 18:02:05
  * @Types access_token获取
  */
 
@@ -13,6 +13,8 @@ import axios from 'axios'
 import query from '../sql/mysql'
 import { WxCon,WxApi } from '../config/index'
 import { timestamp } from './tool'
+
+
 
 /**
  * 获取access_token
