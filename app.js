@@ -14,6 +14,7 @@ import path from 'path'
 import upload from './routes/upload'
 import index from './routes/index'
 import wxReply from './routes/wxReply'
+import wxRouter from './routes/wxRouter'
 
 
 
@@ -55,7 +56,7 @@ app.use(views(path.join(__dirname + '/public'), {
 app.use(upload.routes(), upload.allowedMethods())
 app.use(index.routes(), index.allowedMethods())
 app.use(wxReply.routes(), wxReply.allowedMethods())
-
+app.use(wxRouter.routes(), wxRouter.allowedMethods())
 
 
 
