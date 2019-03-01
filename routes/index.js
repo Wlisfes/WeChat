@@ -12,7 +12,7 @@ const router = Router()
 
 router.get('/', async (ctx) => {
 
-    await ctx.render('text')
+    await ctx.render('text.html')
 })
 
 

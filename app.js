@@ -42,10 +42,15 @@ app.use(bodyparser({
 app.use(require('koa-static')(__dirname + '/public'))
 
 //模板引擎中间件
+// app.use(views(path.join(__dirname + '/public'), {
+//     extension: 'html',
+//     map: {
+//         html: 'handlebars'
+//     }
+// }))
 app.use(views(path.join(__dirname + '/public'), {
-    extension: 'html',
     map: {
-        html: 'handlebars'
+        html: "nunjucks"
     }
 }))
 
