@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-23 18:00:10 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-23 21:56:14
+ * @Last Modified time: 2019-03-01 16:42:24
  * @Types 标签管理
  */
 
@@ -24,9 +24,7 @@ import { WxApi } from '../config/index'
 export const ApiSetlabel = async (ops) => {
     let Token = await ApiAccessToken()
     let res = await axios.post(`${WxApi}/tags/create?access_token=${Token.access_token}`, {
-        "tag": {
-            "name": "刀剑神域"
-        }
+        "tag": ops.tag
     })
 
     return res.data
@@ -56,7 +54,7 @@ export const ApiGetlabelAll = async () => {
  * @param { String } ops.id            是    标签id
  * @param { String } ops.name          是    标签名称
  */
-export const ApiUpdatelabel = async (ops) => {
+export const ApiUpdatalabel = async (ops) => {
     let Token = await ApiAccessToken()
     let res =  await axios.post(`${WxApi}/tags/update?access_token=${Token.access_token}`, {
             "tag" : {

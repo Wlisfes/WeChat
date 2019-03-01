@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-23 21:54:22 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-23 23:19:58
+ * @Last Modified time: 2019-03-01 02:23:58
  * @Types 用户信息管理
  */
 
@@ -25,10 +25,10 @@ import { WxApi } from '../config/index'
 export const ApiUserUpdateInfo = async (ops) => {
     let Token = await ApiAccessToken()
     let res = await axios.post(`${WxApi}/user/info/updateremark?access_token=${Token.access_token}`, {
-            "openid": ops.openid,
-            "remark": ops.remark
+            "openid": ops.openid || "",
+            "remark": ops.remark || ""
         })
-    
+
     return res.data
 }
 
