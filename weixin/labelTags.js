@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-23 18:00:10 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-01 16:42:24
+ * @Last Modified time: 2019-03-01 18:10:22
  * @Types 标签管理
  */
 
@@ -57,10 +57,7 @@ export const ApiGetlabelAll = async () => {
 export const ApiUpdatalabel = async (ops) => {
     let Token = await ApiAccessToken()
     let res =  await axios.post(`${WxApi}/tags/update?access_token=${Token.access_token}`, {
-            "tag" : {
-                "id" : ops.id,
-                "name" : ops.name
-            }
+            "tag" : ops.tag
         })
     
     return res.data
@@ -76,9 +73,7 @@ export const ApiUpdatalabel = async (ops) => {
 export const ApiDeletelabel = async (ops) => {
     let Token = await ApiAccessToken()
     let res = await axios.post(`${WxApi}/tags/delete?access_token=${Token.access_token}`, {
-        "tag": {
-            id: ops.id
-        }
+        "tag": ops.tag
     })
 
     return res.data

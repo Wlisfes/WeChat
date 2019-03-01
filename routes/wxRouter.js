@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-01 00:56:47 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-01 17:01:31
+ * @Last Modified time: 2019-03-01 18:22:06
  * @Types 微信业务接口集成挂载router
  */
 
@@ -115,7 +115,7 @@ router.post('/delete/label', async (ctx) => {
 /**
  * 获取标签下粉丝列表接口
  */
-router.post('/get/label/suer', async (ctx) => {
+router.post('/get/label/user', async (ctx) => {
     let ops = ctx.request.body || {}
     let res = await wx.ApilabeFanlist(ops)
 
@@ -137,7 +137,7 @@ router.post('/user/set/label', async (ctx) => {
 /**
  * 批量为用户取消标签接口
  */
-router.post('/user/delete/label', async () => {
+router.post('/user/delete/label', async (ctx) => {
     let ops = ctx.request.body || {}
     let res = await wx.ApiUserDeletelabel(ops)
 

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>接口测试</title>
+    <style>
+        * {margin: 0;padding: 0;}
+        html,body {width: 100%;min-height: 100vh;max-width: 640px;margin: 0 auto;box-sizing: border-box;}
+        a {position: relative;display: block;margin-left: auto;margin-right: auto;padding-left: 14px;padding-right: 14px;
+            box-sizing: border-box;font-size: 18px;text-align: center;text-decoration: none;color: #FFFFFF;line-height:2.55555556;
+            border-radius: 5px;background-color: #1AAD19;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);overflow: hidden;margin-top: 14px;}
+    </style>
+</head>
+<body style="padding: 0 14px 14px;">
+
+    <div id="app">
+        <a @click="getSign">网页JSApi签名接口</a>
+        <a @click="userUptate">设置用户备注名接口</a>
+        <a @click="userGetInfo">获取用户基本信息接口</a>
+        <a @click="userGetInfoAll">批量获取用户基本信息接口</a>
+        <a @click="userGetList">获取用户列表接口</a>
+        <a @click="setLabel">创建标签接口</a>
+        <a @click="getLabelAll">获取已创建的标签接口</a>
+        <a @click="updateLabel">编辑标签接口</a>
+        <a @click="deleteLabel">删除标签接口</a>
+        <a @click="getLabelUser">获取标签下粉丝列表接口</a>
+        <a @click="userSetLabel">批量为用户打标签接口</a>
+        <a @click="userDeleteLabel">批量为用户取消标签接口</a>
+        <a @click="getUserLabel">获取用户身上的标签接口</a>
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script>
+        const http = `http://localhost:3000`
+        new Vue({
+            el: "#app",
+            methods: {
+                async getSign() {
+                    let res = await axios.get(`${http}/sign`)
+                    console.log(res.data)
+                },
+                async userUptate() {
+                    let res = await axios.post(`${http}/user/update`, {
+                        openid: "o9CNf0RLSdKtCHwNL9DELGhfrSLg",
+                        remark: "陈志航"
+                    })
+                    console.log(res.data)
+                },
+                async userGetInfo() {
+                    let res = await axios.get(`${http}/user/get/info`, {
+                        params: {
+                            openid: "o9CNf0RLSdKtCHwNL9DELGhfrSLg",
+                            lang: "zh_CN "
+                        }
+                    })
+                    console.log(res.data)
+                },
+                async userGetInfoAll() {
+                    let res = await axios.post(`${http}/user/get/infoAll`, {
+                        user_list: [
+                            {
+                                openid: "o9CNf0RLSdKtCHwNL9DELGhfrSLg",
+                                lang: "zh_CN"
+                            },
+                            {
+                                openid: "o9CNf0TI_8jmrgRmIMWgw34M9aWw",
+                                lang: "zh_CN"
+                            }
+                        ]
+                    })
+                    console.log(res.data)
+                },
+                async userGetList() {
+                    let res = await axios.get(`${http}/user/get/list`)
+                    console.log(res.data)
+                },
+                async setLabel() {
+                    let res = await axios.post(`${http}/set/label`, {
+                        tag: {
+                            name: "四月的谎言"
+                        }
+                    })
+                    console.log(res.data)
+                },
+                async getLabelAll() {
+                    let res = await axios.get(`${http}/get/labelAll`)
+                    console.log(res.data)
+                },
+                async updateLabel() {
+                    let res = await axios.post(`${http}/updata/label`, {
+                        tag: {
+                            name: "禁书",
+                            id: 104
+                        }
+                    })
+                    console.log(res.data)
+                },
+                async deleteLabel() {
+                    let res = await axios.post(`${http}/delete/label`, {
+                        tag: {
+                            id: 2
+                        }
+                    })
+                    console.log(res.data)
+                },
+                async getLabelUser() {
+                    let res = await axios.post(`${http}/get/label/user`, {
+                        tagid: 101,
+                        next_openid: ""
+                    })
+                    console.log(res.data)
+                },
+                async userSetLabel() {
+                    let res = await axios.post(`${http}/user/set/label`, {
+                        openid_list: [
+                            "o9CNf0TI_8jmrgRmIMWgw34M9aWw",
+                            "o9CNf0RLSdKtCHwNL9DELGhfrSLg"
+                        ],
+                        tagid: 101
+                    })
+                    console.log(res.data)
+                },
+                async userDeleteLabel() {
+                    let res = await axios.post(`${http}/user/delete/label`, {
+                        openid_list: [
+                            "o9CNf0TI_8jmrgRmIMWgw34M9aWw",
+                            "o9CNf0RLSdKtCHwNL9DELGhfrSLg"
+                        ],
+                        tagid: 101
+                    })
+                    console.log(res.data)
+                },
+                async getUserLabel() {
+                    let res = await axios.get(`${http}/get/user/label`, {
+                        params: {
+                            openid: "o9CNf0TI_8jmrgRmIMWgw34M9aWw"
+                        }
+                    })
+                    console.log(res.data)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
