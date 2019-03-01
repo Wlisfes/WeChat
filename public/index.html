@@ -29,8 +29,13 @@
         <a @click="userSetLabel">批量为用户打标签接口</a>
         <a @click="userDeleteLabel">批量为用户取消标签接口</a>
         <a @click="getUserLabel">获取用户身上的标签接口</a>
+        <a @click="getTemplateID">获取模板id接口</a>
+        <a @click="getTemplateAll">获取模板列表接口</a>
+        <a @click="TemplateDelete">删除模板接口</a>
+        <a @click="TemplateSend">发送模板消息接口</a>
+        <a @click="MsgSendOpenid">根据OpenID列表群发</a>
     </div>
-
+    
 
     <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
@@ -140,6 +145,66 @@
                             openid: "o9CNf0TI_8jmrgRmIMWgw34M9aWw"
                         }
                     })
+                    console.log(res.data)
+                },
+                async getTemplateID() {
+                    let res = await axios.get(`${http}/template/id`, {
+                        params: {
+                            template_id_short: "TM"
+                        }
+                    })
+                    console.log(res.data)
+                },
+                async getTemplateAll() {
+                    let res = await axios.get(`${http}/template/All`)
+                    console.log(res.data)
+                },
+                async TemplateDelete() {
+                    let res = await axios.post(`${http}/template/delete`, {
+                        template_id: "kneX3-tCY3xBqcMQy4yA1m1FnD7_qy7JjadEBuo5dlw"
+                    })
+                    console.log(res.data)
+                },
+                async TemplateSend() {
+                    let res = await axios.post(`${http}/template/send`, {
+                            "touser": "o9CNf0VMAWDPrxgqvU7R5d3_mVFw",
+                            "template_id": "aNTiyh90Fi6_0DxP39r5EkW2bwqaXtHJBCbjBMMV_-E",
+                            "url": "http://lisfes.cn",
+                            "data": {
+                                "first": {
+                                    "value":"恭喜你购买成功！",
+                                    "color":"#173177"
+                                },
+                                "keyword1":{
+                                    "value":"巧克力",
+                                    "color":"#173177"
+                                },
+                                "keyword2": {
+                                    "value":"39.8元",
+                                    "color":"#173177"
+                                },
+                                "keyword3": {
+                                    "value":"2014年9月22日",
+                                    "color":"#173177"
+                                },
+                                "remark":{
+                                    "value":"欢迎再次购买！",
+                                    "color":"#173177"
+                                }
+                            }
+                        })
+                    console.log(res.data)
+                },
+                async MsgSendOpenid() {
+                    let id = await axios.get(`${http}/user/get/list`)
+                    let res = await axios.post(`${http}/msg/send/openid`, {
+                            "touser": id.data.data.openid,
+                            "msgtype": "text",
+                            "text": {
+                                "content": "我不是在针对谁，我是想说在座的各位都是猪头！"
+                            }
+                        })
+
                     console.log(res.data)
                 }
             }

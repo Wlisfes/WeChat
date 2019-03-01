@@ -4,14 +4,14 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-22 22:15:03 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-23 20:13:17
+ * @Last Modified time: 2019-03-01 22:01:15
  * @Types 消息模板
  */
 
 
 
 import axios from 'axios'
-import { WxApi,WxCon } from '../config/index'
+import { WxApi } from '../config/index'
 import { ApiAccessToken } from './token'
 
 
@@ -78,33 +78,7 @@ export const ApitemplateDelete = async (ops) => {
  */
 export const ApitemplateSend = async (ops) => {
     let Token = await ApiAccessToken()
-    let res = await axios.post(`${WxApi}/message/template/send?access_token=${Token.access_token}`, {
-        "touser": "o9CNf0fP4Sq79RMrzmSFq37tm03o",//"o9CNf0SqiGWHfX4PFHqR5t5KVOkg",
-        "template_id": "aNTiyh90Fi6_0DxP39r5EkW2bwqaXtHJBCbjBMMV_-E",
-        "url": ops.url,
-        "data": {
-            "first": {
-                "value":"恭喜你购买成功！",
-                "color":"#173177"
-            },
-            "keyword1":{
-                "value":"巧克力",
-                "color":"#173177"
-            },
-            "keyword2": {
-                "value":"39.8元",
-                "color":"#173177"
-            },
-            "keyword3": {
-                "value":"2014年9月22日",
-                "color":"#173177"
-            },
-            "remark":{
-                "value":"欢迎再次购买！",
-                "color":"#173177"
-            }
-        }
-    })
+    let res = await axios.post(`${WxApi}/message/template/send?access_token=${Token.access_token}`, ops)
 
     return res.data
 }

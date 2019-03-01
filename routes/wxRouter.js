@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-01 00:56:47 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-01 18:22:06
+ * @Last Modified time: 2019-03-01 22:11:58
  * @Types 微信业务接口集成挂载router
  */
 
@@ -156,11 +156,58 @@ router.get('/get/user/label', async (ctx) => {
 })
 
 
+/**
+ * 获取模板ID接口
+ */
+router.get('/template/id', async (ctx) => {
+    let ops = ctx.query || {}
+    let res = await wx.ApitemplateID(ops)
+
+    ctx.body = res
+})
 
 
+/**
+ * 获取模板列表接口
+ */
+router.get('/template/All', async (ctx) => {
+    let res = await wx.ApitemplateAll()
+
+    ctx.body = res
+})
 
 
+/**
+ * 删除模板接口
+ */
+router.post('/template/delete', async (ctx) => {
+    let ops = ctx.request.body || {}
+    let res = await wx.ApitemplateDelete(ops)
 
+    ctx.body = res
+})
+
+
+/**
+ * 发送模板消息接口
+ */
+router.post('/template/send', async (ctx) => {
+    let ops = ctx.request.body || {}
+    let res = await wx.ApitemplateSend(ops)
+
+    ctx.body = res
+})
+
+
+/**
+ * 根据OpenID列表群发
+ */
+router.post('/msg/send/openid', async (ctx) => {
+    let ops = ctx.request.body || {}
+    let res = await wx.msgSendOpenid(ops)
+
+    ctx.body = res
+})
 
 
 
