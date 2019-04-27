@@ -55,11 +55,11 @@ npm run build   打包
 
 # 技术栈
 
-Koa（web后台框架）
-mysql（数据库框架）
-axios（http网络请求）
-co-wechat（微信提供的nodejs微信公众号库）
-babel（es6/7 编辑运行）
+Koa（web后台框架）  
+mysql（数据库框架）  
+axios（http网络请求）  
+co-wechat（微信提供的nodejs微信公众号库）  
+babel（es6/7 编辑运行）  
 
 
 ## 其他说明
