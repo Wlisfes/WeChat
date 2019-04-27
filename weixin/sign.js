@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-02-21 21:31:58 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-02-22 21:06:36
+ * @Last Modified time: 2019-03-02 18:52:24
  * @Type signature JSApi签名接口
  */
 
@@ -22,11 +22,12 @@ import crypto from 'crypto'
 export const ApiSign = async (ctx) => {
     let Ticket = await ApiAccessTicket()
     let url = ctx.request.href
+    console.log(url,1)
     let noncestr = createNonce()
     let timestamp = createTimestamp()
-    let signature = await createSort(noncestr, Ticket.ticket, timestamp, url)
+    let signature = await createSort(noncestr, Ticket.ticket, timestamp, "http://limvc.iok.la/")
     
-    return { signature, noncestr ,timestamp }
+    return { signature, noncestr ,timestamp,ticket:Ticket.ticket }
 }
 
 

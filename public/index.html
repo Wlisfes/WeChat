@@ -34,11 +34,13 @@
         <a @click="TemplateDelete">删除模板接口</a>
         <a @click="TemplateSend">发送模板消息接口</a>
         <a @click="MsgSendOpenid">根据OpenID列表群发</a>
+        <a @click="chooseImage">打开相册</a>
     </div>
     
 
     <script src="https://cdn.bootcss.com/vue/2.6.6/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script>
         const http = `http://localhost:3000`
         new Vue({
@@ -167,9 +169,9 @@
                 },
                 async TemplateSend() {
                     let res = await axios.post(`${http}/template/send`, {
-                            "touser": "o9CNf0VMAWDPrxgqvU7R5d3_mVFw",
+                            "touser": "o9CNf0RLSdKtCHwNL9DELGhfrSLg",
                             "template_id": "aNTiyh90Fi6_0DxP39r5EkW2bwqaXtHJBCbjBMMV_-E",
-                            "url": "http://lisfes.cn",
+                            "url": "http://limvc.iok.la/",
                             "data": {
                                 "first": {
                                     "value":"恭喜你购买成功！",
@@ -196,9 +198,12 @@
                     console.log(res.data)
                 },
                 async MsgSendOpenid() {
-                    let id = await axios.get(`${http}/user/get/list`)
+                    // let id = await axios.get(`${http}/user/get/list`)
                     let res = await axios.post(`${http}/msg/send/openid`, {
-                            "touser": id.data.data.openid,
+                            "touser": [
+                                "o9CNf0fP4Sq79RMrzmSFq37tm03o",
+                                "o9CNf0S-O9MiVaD7_fjX8w3ujHeM"
+                            ],
                             "msgtype": "text",
                             "text": {
                                 "content": "我不是在针对谁，我是想说在座的各位都是猪头！"
@@ -206,7 +211,46 @@
                         })
 
                     console.log(res.data)
+                },
+                async PermissionAddto() {
+                    let sign = await axios.get(`${http}/sign`)
+                    wx.config({
+                        debug: true,
+                        appId: 'wx48397b73f95c1604', 
+                        timestamp: sign.data.timestamp,
+                        nonceStr: sign.data.noncestr,
+                        signature: sign.data.signature,
+                        jsApiList: ["chooseImage"] 
+                    });
+                    // wx.checkJsApi({
+                    //     jsApiList: ['chooseImage'],
+                    //     success: function(res) {
+                    //         console.log(res)
+                    //     }
+                    // })
+                },
+                chooseImage() {
+                    wx.chooseImage({
+                        count: 1,
+                        sizeType: ['original', 'compressed'],
+                        sourceType: ['album', 'camera'],
+                        success: function (res) {
+                            console.log(res)
+                            alert('res')
+
+                            // wx.previewImage({
+                            //         current: res.localIds, 
+                            //         urls: localIds
+                            //     });
+                        },
+                        fail(err) {
+                            alert(JSON.stringify(err))
+                        }
+                    })
                 }
+            },
+            created() {
+                this.PermissionAddto()
             }
         })
     </script>
